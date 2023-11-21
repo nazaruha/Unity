@@ -8,6 +8,7 @@ public class Slingshot : MonoBehaviour
     // пол€, встановлен≥ в ≥нспектор≥ Unity (префаби, ще €кусь шн€гу)
     [Header("Set in Inspector")]
     public GameObject prefabProjectile;
+    public float velocityMult = 8f;
 
     // пол€, встановлен≥ динам≥чно (в процес≥ гри)
     [Header("Set Dynamically")]
@@ -15,6 +16,8 @@ public class Slingshot : MonoBehaviour
     public Vector3 launchPos; // збер≥гаЇ 3х м≥рн≥ координати launchPoint
     public GameObject projectile; // посиланн€ на вже створений Projectile
     public bool aimingMode; // стаЇ true, €кщо ми ц≥лимось м€чиком в рогатц≥
+    private Rigidbody projectileRigidbody;
+
     private void Awake() // запускаЇтьс€ ще перед запуском сцени
     {
         Transform launchPointTrans = transform.Find("LaunchPoint");
@@ -45,7 +48,8 @@ public class Slingshot : MonoBehaviour
         // ѕом≥стити в точку launchPoint
         projectile.transform.position = launchPos;
         // —творити його к≥нематичним
-        projectile.GetComponent<Rigidbody>().isKinematic = true; // щоб на нього не могли впливати ф≥зичн≥ сили двигуна Unity
+        projectileRigidbody = projectile.GetComponent<Rigidbody>();
+        projectileRigidbody.isKinematic = true; // щоб на нього не могли впливати ф≥зичн≥ сили двигуна Unity
         /*
          * то есть кинематическое твердое тело не перемещаетс€ под
            действием силы т€жести или в результате столкновений, но может вызывать
@@ -53,8 +57,36 @@ public class Slingshot : MonoBehaviour
          */
     }
 
-    private void OnMouseUp()
+    private void Update()
     {
-        
+        // якщо рогатка не в режим≥ приц≥люванн€, то не виконувати код
+        if (!aimingMode) return;
+
+        // ќтримати поточн≥ екранн≥ координати вказ≥вника мишки
+        Vector3 mousePos2D = Input.mousePosition; // отриманн€ 2D координат положенн€ миш≥ на екран≥
+        mousePos2D.z = -Camera.main.transform.position.z; // добавл€Їмо третю координату, на €ку вказуЇ мишка дл€ роботи з 3D
+        Vector3 mousePos3D = Camera.main.ScreenToWorldPoint(mousePos2D); // перетворенн€ отриманих 2D координат миш≥ у тривим≥рн≥ координати у св≥товому простор≥ гри
+
+        // «найти р≥зницю координат м≥ж launchPos та mousePos3D
+        Vector3 mouseDelta = mousePos3D - launchPos; // виходить це в≥дстань мишки в≥д нашого launchPoint
+        // ќбмежити mouseDelta рад≥усом коллайдера об'Їкта Slingshot
+        float maxMagnitude = this.GetComponent<SphereCollider>().radius; // шукаЇ колайдер всередин≥ об'Їкта Slingshot
+        if (mouseDelta.magnitude > maxMagnitude)
+        {
+            mouseDelta.Normalize();
+            mouseDelta *= maxMagnitude;
+        }
+
+        // ѕередвинути снар€д в нову позиц≥ю
+        Vector3 projPos = launchPos + mouseDelta;
+        projectile.transform.position = projPos;
+        if (Input.GetMouseButtonUp(0))
+        {
+            //  нопка мишки в≥дпущена
+            aimingMode = false;
+            projectileRigidbody.isKinematic = false;
+            projectileRigidbody.velocity = -mouseDelta * velocityMult;
+            projectile = null; // не удал€Ї створений екземпл€р, але зв≥льнить дане поле дл€ запису в нього посиланн€ на ≥нший екземпл€р, коли користувач р≥шить зробити другий постр≥л
+        }
     }
 }
