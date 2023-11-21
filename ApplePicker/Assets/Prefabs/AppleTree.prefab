@@ -134,7 +134,7 @@ Transform:
   m_GameObject: {fileID: 6615039518224413606}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 12, z: 0}
+  m_LocalPosition: {x: 0, y: 11.5, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -183,8 +183,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appleTree: {fileID: 0}
   speed: 1
-  leftAndRightEdge: 10
-  chanceToChangeDirections: 0.1
+  leftAndRightEdge: 20
+  chanceToChangeDirections: 0.2
   secondsBetweenAppleDrops: 1
 --- !u!1 &8200645507452814171
 GameObject:

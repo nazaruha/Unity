@@ -12,7 +12,7 @@ public class AppleTree : MonoBehaviour
     // відстань на якій повинен мінятись напрямок яблуні
     public float leftAndRightEdge = 10f;
     // вірогідність випадкової зміни напрямку руху яблуні
-    public float chanceToChangeDirections = 0.1f;
+    public float chanceToChangeDirections = 0.1f; // 0.1f = 1%, 0.2 = 2% що рух зміниться
     // частота створення екземплярів яблук
     public float secondsBetweenAppleDrops = 1f;
 
@@ -23,7 +23,7 @@ public class AppleTree : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() // викликається 400 раз в секунду, або 30 якщо слабий пристрій
     {
         // Просте переміщення
         Vector3 pos = transform.position; // поточна позиція яблуні
@@ -38,6 +38,17 @@ public class AppleTree : MonoBehaviour
         else if (pos.x > leftAndRightEdge)
         {
             speed = -Mathf.Abs(speed); // почати рух вліво
+        }
+    }
+
+    private void FixedUpdate() // тут 50 викликів в секунду, тут краще робити такі рандомні якісь зміни
+    {
+        if (Random.value < chanceToChangeDirections)
+        {
+            speed *= -1; // міняємо напрямок руху (для рандомної зміни руху)
+            /*
+             * Random.value возвращает случайное число типа float между 0 и 1 (включая 0 и 1 как возможные значения)
+             */
         }
     }
 }
