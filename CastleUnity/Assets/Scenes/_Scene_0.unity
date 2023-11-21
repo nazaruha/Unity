@@ -332,7 +332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 764475265}
   - component: {fileID: 764475264}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LaunchPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 999949149}
   - component: {fileID: 999949151}
   - component: {fileID: 999949150}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -552,7 +552,7 @@ GameObject:
   - component: {fileID: 1119336255}
   - component: {fileID: 1119336257}
   - component: {fileID: 1119336256}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,7 +635,7 @@ GameObject:
   - component: {fileID: 1181493087}
   - component: {fileID: 1181493086}
   - component: {fileID: 1181493085}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Slingshot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -655,6 +655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabProjectile: {fileID: 212975570043165906, guid: c59a5186592c77443945f2f6509eab75, type: 3}
+  velocityMult: 10
   launchPoint: {fileID: 0}
   launchPos: {x: 0, y: 0, z: 0}
   projectile: {fileID: 0}
@@ -710,7 +711,7 @@ GameObject:
   - component: {fileID: 1424625723}
   - component: {fileID: 1424625725}
   - component: {fileID: 1424625724}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -790,6 +791,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 394355251902311263, guid: 217b257bd092f6c4bac890cc1e29fa32, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630112914897653232, guid: 217b257bd092f6c4bac890cc1e29fa32, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5498484544094721876, guid: 217b257bd092f6c4bac890cc1e29fa32, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5857031843942601017, guid: 217b257bd092f6c4bac890cc1e29fa32, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -797,6 +810,14 @@ PrefabInstance:
     - target: {fileID: 6114399339587758989, guid: 217b257bd092f6c4bac890cc1e29fa32, type: 3}
       propertyPath: m_Name
       value: Slingshot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114399339587758989, guid: 217b257bd092f6c4bac890cc1e29fa32, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501206866247467133, guid: 217b257bd092f6c4bac890cc1e29fa32, type: 3}
+      propertyPath: velocityMult
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8524846920639417916, guid: 217b257bd092f6c4bac890cc1e29fa32, type: 3}
       propertyPath: m_LocalPosition.x
@@ -837,6 +858,10 @@ PrefabInstance:
     - target: {fileID: 8524846920639417916, guid: 217b257bd092f6c4bac890cc1e29fa32, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889021265044801677, guid: 217b257bd092f6c4bac890cc1e29fa32, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
