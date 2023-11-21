@@ -29,5 +29,15 @@ public class AppleTree : MonoBehaviour
         Vector3 pos = transform.position; // поточна позиц≥€ €блун≥
         pos.x += speed * Time.deltaTime; // Time.deltaTime -> количество секунд, прошедших послеотображени€ предыдущего кадра
         transform.position = pos; // присваюЇмо нову позиц≥ю нашоњ €блон≥
+
+        // «м≥на напр€мку
+        if (pos.x < -leftAndRightEdge)
+        {
+            speed = Mathf.Abs(speed); // почати рух вправо
+        }
+        else if (pos.x > leftAndRightEdge)
+        {
+            speed = -Mathf.Abs(speed); // почати рух вл≥во
+        }
     }
 }
