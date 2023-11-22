@@ -6,7 +6,7 @@ public class AppleTree : MonoBehaviour
 {
     [Header("Set in Inspector")]
     // шаблон дл€ створенн€ €блука
-    public GameObject appleTree;
+    public GameObject applePrefab;
     // швидк≥сть руху €блун≥
     public float speed = 1f; // 1f = 1 метр, 10f = 10 метр≥в
     // в≥дстань на €к≥й повинен м≥н€тись напр€мок €блун≥
@@ -20,6 +20,15 @@ public class AppleTree : MonoBehaviour
     void Start()
     {
         // скидувати €блука раз в секунду    
+        Invoke("DropApple", 2f); // виконанн€ функц≥њ почнетьс€ через 2 секунди п≥сл€ прогрузки сцени
+    }
+
+    // √енерац≥€ €блука
+    void DropApple()
+    {
+        GameObject apple = Instantiate<GameObject>(applePrefab);
+        apple.transform.position = transform.position;
+        Invoke("DropApple", secondsBetweenAppleDrops);
     }
 
     // Update is called once per frame

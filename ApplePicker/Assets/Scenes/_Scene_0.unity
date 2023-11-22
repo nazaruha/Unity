@@ -277,8 +277,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 16
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -303,7 +303,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -323,7 +323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4365257952871883920, guid: 69f44a40f46735949a4b9cccf1e718c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 11.5
       objectReference: {fileID: 0}
     - target: {fileID: 4365257952871883920, guid: 69f44a40f46735949a4b9cccf1e718c0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -356,6 +356,18 @@ PrefabInstance:
     - target: {fileID: 4365257952871883920, guid: 69f44a40f46735949a4b9cccf1e718c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5948690537774194598, guid: 69f44a40f46735949a4b9cccf1e718c0, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5948690537774194598, guid: 69f44a40f46735949a4b9cccf1e718c0, type: 3}
+      propertyPath: leftAndRightEdge
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5948690537774194598, guid: 69f44a40f46735949a4b9cccf1e718c0, type: 3}
+      propertyPath: chanceToChangeDirections
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6615039518224413606, guid: 69f44a40f46735949a4b9cccf1e718c0, type: 3}
       propertyPath: m_Name
