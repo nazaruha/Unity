@@ -18,6 +18,11 @@ public class Apple : MonoBehaviour
         {
             // якщо даний екземпляр виходить за межі по осі Y, то видаляємо його, тим самим очищаючи пам'ять
             Destroy(this.gameObject);
+
+            // Отримати посилання на компонент ApplePicker (Script) головной камери Main Camera
+            ApplePicker apScript = Camera.main.GetComponent<ApplePicker>();
+            // Викликати публічний метод AppleDestoyed() з apScript
+            apScript.AppleDestroyed();
         }
     }
 }

@@ -21,6 +21,16 @@ public class ApplePicker : MonoBehaviour
         }
     }
 
+    public void AppleDestroyed()
+    {
+        // Видалити всі яблука
+        GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("Apple"); // Поверне масив всіх існуючих ігрових об'єктів з тегом "Apple"
+        foreach (GameObject tGo in tAppleArray)
+        {
+            Destroy(tGo);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
