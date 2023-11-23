@@ -52,6 +52,12 @@ public class Basket : MonoBehaviour
             score += 100;
             // Перетворити нові бали назад в текст і вивести на екран
             scoreGT.text = score.ToString();
+
+            // Запам'ятати найкращий результат
+            if (score > HighScore.score)
+            {
+                HighScore.score = score;
+            }
         }
     }
 }
