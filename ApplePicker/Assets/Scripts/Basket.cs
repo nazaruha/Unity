@@ -2,13 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Sprites;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Basket : MonoBehaviour
 {
+    [Header("Set Dynamically")]
+    public Text scoreGT;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Отримати посилання на об'єкт ScoreCounter
+        GameObject scoreGO = GameObject.Find("ScoreCounter");
+        // Отримати компонент Text даного ігрового об'єкту
+        scoreGT = scoreGO.GetComponent<Text>();
+        // Встановити початкове число очкі рівним нулю 0
+        scoreGT.text = "0";
     }
 
     // Update is called once per frame
@@ -36,6 +45,13 @@ public class Basket : MonoBehaviour
         if (collidedWith.tag == "Apple")
         {
             Destroy(collidedWith);
+
+            // Переобразувати текст scoreGT в число
+            int score = int.Parse(scoreGT.text);
+            // Добавимо очки за спіймане яблуко
+            score += 100;
+            // Перетворити нові бали назад в текст і вивести на екран
+            scoreGT.text = score.ToString();
         }
     }
 }
