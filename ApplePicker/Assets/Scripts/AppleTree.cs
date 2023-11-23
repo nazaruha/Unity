@@ -36,7 +36,7 @@ public class AppleTree : MonoBehaviour
     {
         // Просте переміщення
         Vector3 pos = transform.position; // поточна позиція яблуні
-        pos.x += speed * Time.deltaTime; // Time.deltaTime -> количество секунд, прошедших послеотображения предыдущего кадра
+        pos.x += speed * Time.deltaTime; // Time.deltaTime -> количество секунд, прошедших после отображения предыдущего кадра
         transform.position = pos; // присваюємо нову позицію нашої яблоні
 
         // Зміна напрямку

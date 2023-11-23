@@ -28,4 +28,14 @@ public class Basket : MonoBehaviour
         pos.x = mousePos3D.x;
         this.transform.position = pos;
     }
+
+    private void OnCollisionEnter(Collision collision) // Даний метод викликається, коли з корзиною стикається якийсь інший об'єкт. У Collision передається об'єкт який стикнувся з корзиною
+    {
+        // Найти яблуко, яке попало на корзину
+        GameObject collidedWith = collision.gameObject; // Эта строка присваивает локальной переменной collidedWith ссылку на игровой объект, столкнувшийся с корзиной.
+        if (collidedWith.tag == "Apple")
+        {
+            Destroy(collidedWith);
+        }
+    }
 }
