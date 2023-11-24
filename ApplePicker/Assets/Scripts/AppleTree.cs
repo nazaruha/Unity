@@ -34,6 +34,16 @@ public class AppleTree : MonoBehaviour
     // Update is called once per frame
     void Update() // викликається 400 раз в секунду, або 30 якщо слабий пристрій
     {
+
+    }
+
+    private void FixedUpdate() // тут 50 викликів в секунду, тут краще робити такі рандомні якісь зміни
+    {
+        MoveRandomly();
+    }
+
+    void MoveRandomly()
+    {
         // Просте переміщення
         Vector3 pos = transform.position; // поточна позиція яблуні
         pos.x += speed * Time.deltaTime; // Time.deltaTime -> количество секунд, прошедших после отображения предыдущего кадра
@@ -48,16 +58,18 @@ public class AppleTree : MonoBehaviour
         {
             speed = -Mathf.Abs(speed); // почати рух вліво
         }
-    }
 
-    private void FixedUpdate() // тут 50 викликів в секунду, тут краще робити такі рандомні якісь зміни
-    {
         if (Random.value < chanceToChangeDirections)
         {
-            speed *= -1; // міняємо напрямок руху (для рандомної зміни руху)
-            /*
-             * Random.value возвращает случайное число типа float между 0 и 1 (включая 0 и 1 как возможные значения)
-             */
+            ChangeDirection();
         }
+    }
+
+    void ChangeDirection()
+    {
+        speed *= -1; // міняємо напрямок руху (для рандомної зміни руху)
+        /*
+         * Random.value возвращает случайное число типа float между 0 и 1 (включая 0 и 1 как возможные значения)
+         */
     }
 }

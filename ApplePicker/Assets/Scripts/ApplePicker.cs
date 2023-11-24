@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -21,6 +21,9 @@ public class ApplePicker : MonoBehaviour
     {
         isGameOver = false;
         Time.timeScale = 1f;
+        //–ø—Ä–∏—Ö–æ–≤—É—î–º–æ –∫—É—Ä—Å–æ—Ä –º–∏—à–∫–∏
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
 
         basketList = new List<GameObject>();
         for (int i = 0; i < basketNums; i++)
@@ -35,29 +38,29 @@ public class ApplePicker : MonoBehaviour
 
     public void AppleDestroyed()
     {
-        // ¬Ë‰‡ÎËÚË ‚Ò≥ ˇ·ÎÛÍ‡
-        GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("Apple"); // œÓ‚ÂÌÂ Ï‡ÒË‚ ‚Ò≥ı ≥ÒÌÛ˛˜Ëı ≥„Ó‚Ëı Ó·'∫ÍÚ≥‚ Á ÚÂ„ÓÏ "Apple". ÕÂ ÂÍÓÏÂÌ‰Û∫Ú¸Òˇ ‚ËÍÓËÒÚÓ‚Û‚‡ÚË FindGameObjectsWithTag() ÏÂÚÓ‰ ‚ÒÂÂ‰ËÌ≥ Update() ˜Ë FixedUpdate(), ‡ÎÂ Ú‡Í ˇÍ ÏË ‚ ‰‡Ì≥È ÒËÚÛ‡ˆ≥ø ·Û‰ÂÏ ‚Ë‰‡ÎˇÚË ÍÓÁËÌÛ ≥ „‡ ·Û‰Â ÁÛÔËÌˇÚËÒ¸ ‚ ‰‡Ì≥È ÚÓ˜ˆ≥, ÚÓ ÏÓÊÌ‡
+        // –í–∏–¥–∞–ª–∏—Ç–∏ –≤—Å—ñ —è–±–ª—É–∫–∞
+        GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("Apple"); // –ü–æ–≤–µ—Ä–Ω–µ –º–∞—Å–∏–≤ –≤—Å—ñ—Ö —ñ—Å–Ω—É—é—á–∏—Ö —ñ–≥—Ä–æ–≤–∏—Ö –æ–±'—î–∫—Ç—ñ–≤ –∑ —Ç–µ–≥–æ–º "Apple". –ù–µ —Ä–µ–∫–æ–º–µ–Ω–¥—É—î—Ç—å—Å—è –≤–∏–∫–æ—Ä–∏—Å—Ç–æ–≤—É–≤–∞—Ç–∏ FindGameObjectsWithTag() –º–µ—Ç–æ–¥ –≤—Å–µ—Ä–µ–¥–∏–Ω—ñ Update() —á–∏ FixedUpdate(), –∞–ª–µ —Ç–∞–∫ —è–∫ –º–∏ –≤ –¥–∞–Ω—ñ–π —Å–∏—Ç—É–∞—Ü—ñ—ó –±—É–¥–µ–º –≤–∏–¥–∞–ª—è—Ç–∏ –∫–æ—Ä–∑–∏–Ω—É —ñ –≥—Ä–∞ –±—É–¥–µ –∑—É–ø–∏–Ω—è—Ç–∏—Å—å –≤ –¥–∞–Ω—ñ–π —Ç–æ—á—Ü—ñ, —Ç–æ –º–æ–∂–Ω–∞
         foreach (GameObject tGo in tAppleArray)
         {
             Destroy(tGo);
         }
 
-        // ¬Ë‰‡ÎËÚË Ó‰ÌÛ ÍÓÁËÌÛ
-        // ŒÚËÏ‡ÚË ≥Ì‰ÂÍÒ ÓÒÚ‡ÌÌ¸Óø ÍÓÁËÌË ‚ basketList
+        // –í–∏–¥–∞–ª–∏—Ç–∏ –æ–¥–Ω—É –∫–æ—Ä–∑–∏–Ω—É
+        // –û—Ç—Ä–∏–º–∞—Ç–∏ —ñ–Ω–¥–µ–∫—Å –æ—Å—Ç–∞–Ω–Ω—å–æ—ó –∫–æ—Ä–∑–∏–Ω–∏ –≤ basketList
         int lastBasketIndex = basketList.Count - 1;
-        // ŒÚËÏ‡ÚË ÔÓÒËÎ‡ÌÌˇ Ì‡ ‰‡ÌËÈ ≥„Ó‚ËÈ Ó·'∫ÍÚ Basket
+        // –û—Ç—Ä–∏–º–∞—Ç–∏ –ø–æ—Å–∏–ª–∞–Ω–Ω—è –Ω–∞ –¥–∞–Ω–∏–π —ñ–≥—Ä–æ–≤–∏–π –æ–±'—î–∫—Ç Basket
         GameObject basketToDelete = basketList[lastBasketIndex];
-        // ¬ËÍÎ˛˜ËÚË ÍÓÁËÌÛ Á≥ ÒÔËÒÍÛ basketList Ú‡ ‚Ë‰‡ÎËÚË Ò‡Ï ≥„Ó‚ËÈ Ó·'∫ÍÚ Á ≥„Ë
+        // –í–∏–∫–ª—é—á–∏—Ç–∏ –∫–æ—Ä–∑–∏–Ω—É –∑—ñ —Å–ø–∏—Å–∫—É basketList —Ç–∞ –≤–∏–¥–∞–ª–∏—Ç–∏ —Å–∞–º —ñ–≥—Ä–æ–≤–∏–π –æ–±'—î–∫—Ç –∑ —ñ–≥—Ä–∏
         basketList.RemoveAt(lastBasketIndex);
         Destroy(basketToDelete);
 
-        // ﬂÍ˘Ó ÍÓÁËÌ ÌÂÏ‡∫ ·≥Î¸¯Â - ÔÂÂÁ‡ÔÛÒÚËÚË „Û
-        if (basketList.Count == 2)
+        // –Ø–∫—â–æ –∫–æ—Ä–∑–∏–Ω –Ω–µ–º–∞—î –±—ñ–ª—å—à–µ - –ø–µ—Ä–µ–∑–∞–ø—É—Å—Ç–∏—Ç–∏ –≥—Ä—É
+        if (basketList.Count == 0)
         {
             isGameOver = true;
             Time.timeScale = 0f;
-            SceneManager.LoadScene("_Scene_GameOver");
-            //SceneManager.LoadScene("_Scene_0"); // «‡„ÛÊ‡∫ Ì‡ÌÓ‚Ó ÒˆÂÌÛ
+            //SceneManager.LoadScene("_Scene_GameOver");
+            SceneManager.LoadScene("_Scene_0"); // –ó–∞–≥—Ä—É–∂–∞—î –Ω–∞–Ω–æ–≤–æ —Å—Ü–µ–Ω—É
         }
     }
 
@@ -66,8 +69,11 @@ public class ApplePicker : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            EditorApplication.isPlaying = false;
-            Application.Quit();
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
         }
     }
 }
