@@ -12,6 +12,7 @@ public class ApplePicker : MonoBehaviour
     public float basketBottomY = -14f;
     public float basketSpacingY = 2f;
     public List<GameObject> basketList;
+    public GameObject CanvasGameOver;
 
     [Header("Set Dynamically")]
     static public bool isGameOver = false;
@@ -21,6 +22,7 @@ public class ApplePicker : MonoBehaviour
     {
         isGameOver = false;
         Time.timeScale = 1f;
+        
         //приховуємо курсор мишки
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
@@ -55,12 +57,14 @@ public class ApplePicker : MonoBehaviour
         Destroy(basketToDelete);
 
         // Якщо корзин немає більше - перезапустити гру
-        if (basketList.Count == 0)
+        if (basketList.Count == 2)
         {
             isGameOver = true;
             Time.timeScale = 0f;
+            GameObject canvasGameOver = Instantiate(CanvasGameOver);
+            canvasGameOver.SetActive(true);
             //SceneManager.LoadScene("_Scene_GameOver");
-            SceneManager.LoadScene("_Scene_0"); // Загружає наново сцену
+            //SceneManager.LoadScene("_Scene_0"); // Загружає наново сцену
         }
     }
 

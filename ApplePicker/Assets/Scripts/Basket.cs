@@ -22,6 +22,7 @@ public class Basket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ApplePicker.isGameOver) return;
         // Отримати поточні координати вказівника мишки на екрані за допомогою Input
         Vector3 mousePos2D = Input.mousePosition; // Координата Z в Input.mousePositon всегда равна 0, потому что экран, по сути, это двумерная плоскость.
 
