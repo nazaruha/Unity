@@ -9,7 +9,7 @@ public class ApplePicker : MonoBehaviour
     [Header("Set in Inspector")]
     public GameObject basketPrefab;
     public int basketNums = 3;
-    public float basketBottomY = -14f;
+    public float basketBottomY = -17f;
     public float basketSpacingY = 2f;
     public List<GameObject> basketList;
     public GameObject CanvasGameOver;
@@ -61,8 +61,11 @@ public class ApplePicker : MonoBehaviour
         {
             isGameOver = true;
             Time.timeScale = 0f;
-            GameObject canvasGameOver = Instantiate(CanvasGameOver);
-            canvasGameOver.SetActive(true);
+            print("SetActive GameOverPopup");
+            CanvasGameOver.SetActive(true);
+            print("SetActivated GameOverPopup");
+            //GameObject canvasGameOver = Instantiate(CanvasGameOver);
+            //canvasGameOver.SetActive(true);
             //SceneManager.LoadScene("_Scene_GameOver");
             //SceneManager.LoadScene("_Scene_0"); // Загружає наново сцену
         }

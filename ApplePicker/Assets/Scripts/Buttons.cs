@@ -5,36 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
-    [Header("Set in Inspector")]
-    public GameObject CanvasGameOver;
-
-    public void BtnRestart()
+    public void RestartGame()
     {
-        GameObject canvasGameOver = Instantiate(CanvasGameOver);
-        canvasGameOver.SetActive(false);
         //ApplePicker.isGameOver = false;
         //Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     }
 
-    public void BtnQuit()
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void QuitGame()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
