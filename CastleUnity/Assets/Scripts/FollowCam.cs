@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Apple;
 
 public class FollowCam : MonoBehaviour
 {
@@ -32,10 +33,26 @@ public class FollowCam : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (POI == null) return; // Вийти якщо об'єкт, за яким мусить слідкувати камера, пустий
+        //if (POI == null) return; // Вийти якщо об'єкт, за яким мусить слідкувати камера, пустий
 
         // отримути позицію зацікавленого об'єкту
-        Vector3 destination = POI.transform.position;
+        //Vector3 destination = POI.transform.position;
+
+        Vector3 destination;
+        if (POI == null)
+            destination = Vector3.zero;
+        else
+        {
+            destination = POI.transform.position;
+            if (POI.tag == "Projectile")
+            {
+                if (POI.GetComponent<Rigidbody>().IsSleeping()) // якщо шарік вже зупинився
+                {
+                    POI = null;
+                    return;
+                }
+            }
+        }
         // Обмежує Х та Y мінімальними значеннями
         destination.x = Mathf.Max(minXY.x, destination.x);
         destination.y = Mathf.Max(minXY.y, destination.y);
