@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Slingshot : MonoBehaviour
 {
+    static private Slingshot S; // скритий статичний екземпл€р Slingshot
     // пол€, встановлен≥ в ≥нспектор≥ Unity (префаби, ще €кусь шн€гу)
     [Header("Set in Inspector")]
     public GameObject prefabProjectile;
@@ -18,8 +19,18 @@ public class Slingshot : MonoBehaviour
     public bool aimingMode; // стаЇ true, €кщо ми ц≥лимось м€чиком в рогатц≥
     private Rigidbody projectileRigidbody;
 
-    private void Awake() // запускаЇтьс€ ще перед запуском сцени
+    static public Vector3 LAUNCH_POS // початкове положенн€ об'Їкту
     {
+        get
+        {
+            if (S == null) return Vector3.zero; // €кщо поле S == null, то поверне [0, 0, 0]
+            return S.launchPos;
+        }
+    }
+
+    private void Awake() // запускаЇтьс€ ще перед запуском сцени. это самый первый метод, который вызываетс€ после создани€ экземпл€ра любого класса, наследующего MonoBehaviour, поле S будет установлено до того, как какой-то другой код попробует обратитьс€ к свойству LAUNCH_POS.
+    {
+        S = this; //«десь экземпл€р this класса Slingshot присваиваетс€ полю S
         Transform launchPointTrans = transform.Find("LaunchPoint");
         launchPoint = launchPointTrans.gameObject;
         launchPoint.SetActive(false); // ≥гноруЇ об'Їкти. ѓх ми в≥зуально не бачимо (але пам'€ть займаЇ)
